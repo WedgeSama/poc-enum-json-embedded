@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DentalDiagram index{% endblock %}
+
+{% block body %}
+    <h1>DentalDiagram index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datas</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dental_diagram in dental_diagrams %}
+            <tr>
+                <td>{{ dental_diagram.id }}</td>
+                <td>{{ dental_diagram.datas|length }}</td>
+                <td>
+                    <a href="{{ path('app_dental_diagram_show', {'id': dental_diagram.id}) }}">show</a>
+                    <a href="{{ path('app_dental_diagram_edit', {'id': dental_diagram.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_dental_diagram_new') }}">Create new</a>
+{% endblock %}

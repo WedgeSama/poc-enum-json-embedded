@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit DentalDiagram{% endblock %}
+
+{% block body %}
+    <h1>Edit DentalDiagram</h1>
+
+    {{ include('dental_diagram/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_dental_diagram_index') }}">back to list</a>
+
+    {{ include('dental_diagram/_delete_form.html.twig') }}
+{% endblock %}

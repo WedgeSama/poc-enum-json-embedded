@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DentalDiagram{% endblock %}
+
+{% block body %}
+    <h1>DentalDiagram</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dental_diagram.id }}</td>
+            </tr>
+            <tr>
+                <th>JsonDatas</th>
+                <td>{{ dental_diagram.datas|length }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Data items</h2>
+    <hr>
+    {% for data in dental_diagram.datas %}
+        <div>
+            <h4>Item {{ loop.index }}</h4>
+            {{ data }}
+            {{ dump(data) }}
+            <pre>{{ serialize(data) }}</pre>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <h2>Full serialize</h2>
+    <pre>{{ serialize(dental_diagram.datas) }}</pre>
+
+    <a href="{{ path('app_dental_diagram_index') }}">back to list</a>
+
+    <a href="{{ path('app_dental_diagram_edit', {'id': dental_diagram.id}) }}">edit</a>
+
+    {{ include('dental_diagram/_delete_form.html.twig') }}
+{% endblock %}
